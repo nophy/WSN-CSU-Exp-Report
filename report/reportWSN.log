@@ -1,4 +1,4 @@
-This is XeTeX, Version 3.14159265-2.6-0.999992 (TeX Live 2020/W32TeX) (preloaded format=xelatex 2021.3.9)  2 DEC 2021 08:42
+This is XeTeX, Version 3.14159265-2.6-0.999992 (TeX Live 2020/W32TeX) (preloaded format=xelatex 2021.3.9)  9 DEC 2021 10:06
 entering extended mode
  restricted \write18 enabled.
  %&-line parsing enabled.
@@ -548,22 +548,32 @@ File: screenshot003.png Graphic file (type bmp)
 <screenshot003.png>
 
 [5]
-File: Figure_2.png Graphic file (type bmp)
-<Figure_2.png>
+File: screenshot011.png Graphic file (type bmp)
+<screenshot011.png>
  [6]
-File: Figure_4.png Graphic file (type bmp)
-<Figure_4.png>
+File: screenshot012.png Graphic file (type bmp)
+<screenshot012.png>
  [7]
-File: Figure_3.png Graphic file (type bmp)
-<Figure_3.png>
- [8] [9] [10] [11] [12] [13] [14] [15] (./reportWSN.aux) ) 
+File: screenshot006.png Graphic file (type bmp)
+<screenshot006.png>
+File: screenshot007.png Graphic file (type bmp)
+<screenshot007.png>
+ [8]
+File: screenshot008.png Graphic file (type bmp)
+<screenshot008.png>
+File: screenshot009.png Graphic file (type bmp)
+<screenshot009.png>
+ [9]
+File: screenshot010.png Graphic file (type bmp)
+<screenshot010.png>
+ [10] [11] [12] [13] [14] [15] [16] [17] (./reportWSN.aux) ) 
 Here is how much of TeX's memory you used:
- 9733 strings out of 481358
- 245105 string characters out of 5927882
- 874655 words of memory out of 5000000
- 26965 multiletter control sequences out of 15000+600000
+ 9787 strings out of 481358
+ 246656 string characters out of 5927882
+ 877693 words of memory out of 5000000
+ 27019 multiletter control sequences out of 15000+600000
  537319 words of font info for 79 fonts, out of 8000000 for 9000
  36 hyphenation exceptions out of 8191
  56i,10n,68p,722b,1802s stack positions out of 5000i,500n,10000p,200000b,80000s
 
-Output written on reportWSN.pdf (18 pages).
+Output written on reportWSN.pdf (20 pages).

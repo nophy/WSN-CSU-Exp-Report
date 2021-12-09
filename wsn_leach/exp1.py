@@ -11,9 +11,9 @@ def run():
     :return:
     """
     # 节点数目和圆形网络半径
-    N = 100
+    N = 500
     R = 10
-    r = 8.7
+    r = 4
     # 获取初始节点列表
     top, iso = node_factory(N, R, r)
     

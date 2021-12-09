@@ -344,21 +344,21 @@
 	  
 	 在簇建立阶段，传感器节点随机生成一个0，1之间的随机数，并且与阈值T(n)做比较，如果小于该阈值，则该节点就会当选为簇头。参考csdn博客\url{https://blog.csdn.net/wangh0802/article/details/78656775}
 	 
-	 在这里，通过概率选取簇头， 形成簇头组成的list，随后对剩余的每一个节点，都要对簇头list进行遍历，找到离该节点最近的簇头，记录下该距离，并将该节点归入到该簇头的簇下。实验结果如图\ref{fig:figure2}和图\ref{fig:figure4}所示。
+	 在这里，通过概率选取簇头， 形成簇头组成的list，随后对剩余的每一个节点，都要对簇头list进行遍历，找到离该节点最近的簇头，记录下该距离，并将该节点归入到该簇头的簇下。实验结果如图\ref{fig:figure2}和图\ref{fig:figure4}所示。网络参数：圆形网络结构半径R=，网络节点通信范围r=，
 	 
-	 \begin{figure}[H]
-	 	\centering
-	 	\includegraphics[width=0.65\linewidth]{Figure_2}
-	 	\caption{使用LEACH分簇协议分簇后的网络结构（第一轮），连线表示节点隶属于哪一簇，红线连接表示超出通信半径r=8.7，此节点为该簇中的孤立节点}
-	 	\label{fig:figure2}
-	 \end{figure}
+	\begin{figure}[H]
+		\centering
+		\includegraphics[width=0.65\linewidth]{screenshot011}
+		\caption{使用LEACH分簇协议分簇后的网络结构（第一轮），连线表示节点隶属于哪一簇，红线连接表示超出通信半径r=4，此节点为该簇中的孤立节点}
+		\label{fig:figure2}
+	\end{figure}
  
-	 \begin{figure}[H]
-	 	\centering
-	 	\includegraphics[width=0.65\linewidth]{Figure_4}
-	 	\caption{使用LEACH分簇协议分簇后的网络结构（第二轮），连线表示节点隶属于哪一簇，红线连接表示超出通信半径r=8.7，此节点为该簇中的孤立节点}
-	 	\label{fig:figure4}
-	 \end{figure}
+	\begin{figure}[H]
+		\centering
+		\includegraphics[width=0.65\linewidth]{screenshot012}
+		\caption{使用LEACH分簇协议分簇后的网络结构（第二轮），连线表示节点隶属于哪一簇，红线连接表示超出通信半径r=4，此节点为该簇中的孤立节点}
+		\label{fig:figure4}
+	\end{figure}
  
 	 
 	2. 数据包的发送以及能量仿真
@@ -369,20 +369,56 @@
 	
 	对于每个簇中的孤立的节点，我们做这样的处理：能够发送数据按照发送数据包消耗能量模型进行处理，但是对于该节点所在的簇头节点来讲，并不会损耗能量。
 	
-	在出现第一个网络节点能量耗尽时，实验结果的三维能量分布图如图\ref{fig:figure3}所示。
+	簇头概率选择为0.05，进行200轮簇头选择以及数据传送之后，实验结果的三维能量分布图以及各个节点能量的标准差如图\ref{fig:figure3}所示，标准差为0.0742，颜色越蓝表示能量越少，能量越红表示能量越多。
 	\begin{figure}[H]
 		\centering
-		\includegraphics[width=0.7\linewidth]{Figure_3}
-		\caption{在迭代循环1000次之后，各个节点的能量剩余三维图， 为了效果更好，这里使用500个节点}
+		\includegraphics[width=0.7\linewidth]{screenshot006}
+		\caption{节点数目N=300，圆形网路拓扑结构半径R=20，通信半径r=5，簇头概率选择为0.05，得到的节点剩余能量的标准差为0.0742}
 		\label{fig:figure3}
 	\end{figure}
+
+	簇头概率选择为0.15，进行200轮簇头选择以及数据传送之后，实验结果的三维能量分布图以及各个节点能量的标准差如图\ref{fig:screenshot007}所示，标准差为0.0434，颜色越蓝表示能量越少，能量越红表示能量越多。
+	\begin{figure}[H]
+		\centering
+		\includegraphics[width=0.7\linewidth]{screenshot007}
+		\caption{节点数目N=300，圆形网路拓扑结构半径R=20，通信半径r=5，簇头概率选择为0.15，得到的节点剩余能量的标准差为0.0434}
+		\label{fig:screenshot007}
+	\end{figure}
 	
-		从之前的分析可以看出，LEACH算法存在的一定的缺点：在LEACH算法中，每一轮循环都要重新构造簇，而构造簇的能量开销比较大。其次，远离汇聚节点的簇头节点可能会由于长距离发送数据而过早耗尽自身能量，造成网络分割。另外，LEACH算法没有考虑簇头节点当前的能量状况，如果能量很低的节点当选为簇头节点，那么将会加速该节点的死亡，影响整个网络的生命周期。
+	簇头概率选择为0.25，进行200轮簇头选择以及数据传送之后，实验结果的三维能量分布图以及各个节点能量的标准差如图\ref{fig:screenshot008}所示，标准差为0.0420，颜色越蓝表示能量越少，能量越红表示能量越多。
+	\begin{figure}[H]
+		\centering
+		\includegraphics[width=0.7\linewidth]{screenshot008}
+		\caption{节点数目N=300，圆形网路拓扑结构半径R=20，通信半径r=5，簇头概率选择为0.25，得到的节点剩余能量的标准差为0.0420}
+		\label{fig:screenshot008}
+	\end{figure}
+	
+	簇头概率选择为0.35，进行200轮簇头选择以及数据传送之后，实验结果的三维能量分布图以及各个节点能量的标准差如图\ref{fig:screenshot009}所示，标准差为0.0345，颜色越蓝表示能量越少，能量越红表示能量越多。
+	\begin{figure}[H]
+		\centering
+		\includegraphics[width=0.7\linewidth]{screenshot009}
+		\caption{节点数目N=300，圆形网路拓扑结构半径R=20，通信半径r=5，簇头概率选择为0.35，得到的节点剩余能量的标准差为0.0345}
+		\label{fig:screenshot009}
+	\end{figure}
+
+	簇头概率选择为0.45，进行200轮簇头选择以及数据传送之后，实验结果的三维能量分布图以及各个节点能量的标准差如图\ref{fig:screenshot010}所示，标准差为0.0258，颜色越蓝表示能量越少，能量越红表示能量越多。
+	\begin{figure}
+		\centering
+		\includegraphics[width=0.7\linewidth]{screenshot010}
+		\caption{节点数目N=300，圆形网路拓扑结构半径R=20，通信半径r=5，簇头概率选择为0.45，得到的节点剩余能量的标准差为0.0258}
+		\label{fig:screenshot010}
+	\end{figure}
+
+	从上述的实验结果中可以看出，当簇头选择的概率从0.05变化到0.45时，结果200轮的数据传输和簇头选择之后，各个节点的剩余能量标准差逐渐减小，表示剩余能量在各个节点间的分布变得越来越均匀，协议在能量平均方面的效果越来越好。
+	
+	但是需要注意的是，并不是簇头选择概率越大越好，簇头选择概率越大，表示平均每轮的簇头数越多，这样会增加协议本身在能量方面的开销，并且簇头增多会使得sink节点的能量消耗增大，从而sink节点过早“死亡”，可能导致整个网络提前出现能量消耗殆尽的问题。
+	
+	从之前的分析可以看出，LEACH算法存在的一定的缺点：在LEACH算法中，每一轮循环都要重新构造簇，而构造簇的能量开销比较大。其次，远离汇聚节点的簇头节点可能会由于长距离发送数据而过早耗尽自身能量，造成网络分割。另外，LEACH算法没有考虑簇头节点当前的能量状况，如果能量很低的节点当选为簇头节点，那么将会加速该节点的死亡，影响整个网络的生命周期。
 	
 	并且LEACH的使用存在一定的局限性：1. 由于LEACH假定所有节点能够与汇聚节点直接通信，并且每个节点都具备支持不同MAC协议的计算能力，因此该协议不适合在大规模的无线传感器网络中应用。2. 协议没有说明簇头节点的数目怎么分布才能及于整个网络。因此，很可能出现被选的簇头节点集中在网络某一区域的现象，这样就会使得一些节点的周围没有任何簇头节点。3. 由于LEACH假定在最初的簇头选择回合中，所有的节点都携带相同的能量，并且每个成为簇头的节点都消耗大致相同的能量。因此，协议不适合节点能量不均衡的网络。
 	
 	\subsection{实验代码}
-	特此说明：本文实验一、实验二代码参考了csdn博客，但是做了必要的修改：\url{https://blog.csdn.net/wsh596823919/article/details/79981408}
+	特此说明：本文实验一、实验二代码参考了csdn博客，但是做了根据本实验内容进行调整与修改：\url{https://blog.csdn.net/wsh596823919/article/details/79981408}
 	\begin{lstlisting}[style=python-editor]
 		import numpy as np
 		import matplotlib.pyplot as plt
@@ -611,17 +647,10 @@
 			
 			# 将所有节点的剩余能量统计起来，用于后续能量三维图的显示
 			for i in range(len(lastclass)):
-				centor = lastclass[i][0]
-				x.append(centor[0])
-				y.append(centor[1])
-				e.append(centor[2])
 				for point in lastclass[i]:
-					if point[2] > 0:
-						x.append(point[0])
-						y.append(point[1])
-						e.append(point[2])
-					else:
-						pass
+					x.append(point[0])
+					y.append(point[1])
+					e.append(point[2])
 			
 			# 需要进行数据类型转换list->ndarray，才能进行三维图像的显示
 			x = np.array(x)
@@ -629,6 +658,7 @@
 			e = np.array(e)
 			
 			# 显示三维图像
+			print(f"各节点能量的标准差: {np.std(e):.4f}")
 			ax1.plot_trisurf(x, y, e, cmap='rainbow')
 			plt.show()
 		

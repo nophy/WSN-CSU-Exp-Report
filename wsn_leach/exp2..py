@@ -63,7 +63,7 @@ def sel_heads(r, nodes, flags):
     :return: 簇首列表heads,簇成员列表members
     """
     # 阈值函数 Tn 使用leach计算
-    P = 0.05 * (100 / len(nodes))
+    P = 0.25 * (200 / len(nodes))
     Tn = P / (1 - P * (r % (1 / P)))
     heads = []  # 簇首列表
     members = []    # 簇成员列表
@@ -94,11 +94,11 @@ def classify(nodes, flag, r, mode=1, k=20):
     :return: 簇分类结果列表 classes[[类1..],[类2...],......]  [类1...簇首...簇成员]
     """
     # 能量损耗模型的参数
-    b = 2400
-    e_elec = 5*np.power(10., -9)
-    e_fs = 10*np.power(10., -12)
-    e_mp = 0.0013*np.power(10., -12)
-    d_0 = 80
+    b = 2400    # 比特数
+    e_elec = 5*np.power(10., -9)*100
+    e_fs = 10*np.power(10., -12)*100
+    e_mp = 0.0013*np.power(10., -12)*100
+    d_0 = 4.0   # 阈值
 
     # k轮的有效集合: 无死亡节点
     iter_classes = []
@@ -154,12 +154,10 @@ def classify(nodes, flag, r, mode=1, k=20):
                         heads[head_cla][2] -= e_elec*b
                     else:
                         pass
-
-
                     # heads[head_cla][2] -= e_elec*b
                 else:
                     e_is_empty = mode
-                    break
+                    # break
             iter_classes.append(classes)
  
         else:
@@ -226,17 +224,10 @@ def show_eninfo(iter_classes):
 
     # 将所有节点的剩余能量统计起来，用于后续能量三维图的显示
     for i in range(len(lastclass)):
-        centor = lastclass[i][0]
-        x.append(centor[0])
-        y.append(centor[1])
-        e.append(centor[2])
         for point in lastclass[i]:
-            if point[2] > 0:
-                x.append(point[0])
-                y.append(point[1])
-                e.append(point[2])
-            else:
-                pass
+            x.append(point[0])
+            y.append(point[1])
+            e.append(point[2])
 
     # 需要进行数据类型转换list->ndarray，才能进行三维图像的显示
     x = np.array(x)
@@ -244,6 +235,7 @@ def show_eninfo(iter_classes):
     e = np.array(e)
 
     # 显示三维图像
+    print(f"各节点能量的标准差: {np.std(e):.4f}")
     ax1.plot_trisurf(x, y, e, cmap='rainbow')
     plt.show()
 
@@ -258,18 +250,18 @@ def run():
     :return:
     """
     # N = int(input("请输入节点个数:"))
-    N = 500
-    R = 10
-    r = 8.7
+    N = 300
+    R = 20
+    r = 5
 
     # 获取初始节点列表
     nodes, flag, iso = node_factory(N, R, r, energy=5)
     # 对节点列表进行簇分类,mode为模式 2种
     iter_classes = classify(nodes,flag, r, mode=1, k=200)
     # 迭代每次聚类结果，显示连线图
-    # for classes in iter_classes:
-    #     # 显示分类结果
-    #     show_plt(classes, R, r)
+    for classes in iter_classes:
+        # 显示分类结果
+        show_plt(classes, R, r)
 
     show_eninfo(iter_classes)
 if __name__ == '__main__':

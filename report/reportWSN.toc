@@ -5,7 +5,7 @@
 \contentsline {section}{\numberline {2}实验二：无线传感器网络LEACH协议}{5}%
 \contentsline {subsection}{\numberline {2.1}实验目的与要求}{5}%
 \contentsline {subsection}{\numberline {2.2}实验内容、结果与分析}{6}%
-\contentsline {subsection}{\numberline {2.3}实验代码}{9}%
-\contentsline {section}{\numberline {3}实验总结与体会}{14}%
-\contentsline {subsection}{\numberline {3.1}感悟}{14}%
-\contentsline {subsection}{\numberline {3.2}收获}{15}%
+\contentsline {subsection}{\numberline {2.3}实验代码}{11}%
+\contentsline {section}{\numberline {3}实验总结与体会}{16}%
+\contentsline {subsection}{\numberline {3.1}感悟}{16}%
+\contentsline {subsection}{\numberline {3.2}收获}{17}%
